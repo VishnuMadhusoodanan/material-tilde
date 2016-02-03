@@ -1,6 +1,6 @@
-# tilde
+# material tilde
 
-I was inspired by [/r/startpages](https://www.reddit.com/r/startpages), and this is the result. The idea is to have a homepage for your browser that is functional and sexy.
+A material design new tab/homepage based off of cadejscroggins' tilde startpage.
 
 **Usage:**
 
@@ -9,9 +9,9 @@ It's pretty simple. To go to a site you just enter the corresponding key. To vie
 **Examples:**
 
 ```
-a                # takes you to amazon.com
-t: donald trump  # searches Twitter for Donald Trump
-g: twitter       # searches GitHub for Twitter
-f                # takes you to facebook.com
+amazon                # takes you to amazon.com
+twitter: donald trump  # searches Twitter for Donald Trump
+github: twitter       # searches GitHub for Twitter
+fb                # takes you to facebook.com
 asdf             # searches google for asdf
 ```
