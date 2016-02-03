@@ -1,179 +1,262 @@
 <!doctype html>
 
-<title>~</title>
+<title>New Tab</title>
 
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<script type="text/javascript">WebFontConfig={google:{families:['Lato:300:latin']}};</script>
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async></script>
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,700' rel='stylesheet' type='text/css'>
 
+<!--CSS-->
 <style type="text/css">
-  body,
-  input {
-    font-family: 'Lato', sans-serif;
-  }
-
-  body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background: #29323c;
-    color: #fff;
-    text-align: center;
-  }
-
-  input,
-  input:focus {
-    border: 0;
-    outline: 0;
-    -webkit-appearance: none;
-  }
-
-  .wrapper {
-    position: relative;
-    top: 30%;
-    padding: 1rem;
-  }
-
-  .time {
-    font-size: 5rem;
-    letter-spacing: 6px;
-  }
-
-  .search {
-    margin-top: 2rem;
-  }
-
-  .search__text,
-  .help {
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .search__text {
-    padding: 0.75rem;
-    background-color: #3F4A56;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 1.1rem;
-  }
-
-  .help {
-    height: 0;
-    margin: 1rem auto 0;
-    border-right: dashed 1px #fff;
-    transition: height 0.2s linear;
-    text-align: left;
-    line-height: 1rem;
-    column-count: 2;
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    overflow: hidden;
-  }
+	body,
+	input {
+		font-family: 'RobotoDraft', sans-serif;
+	}
+	
+	body {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background: #EEEEEE;
+		color: #FFFFFF;
+		text-align: center;
+	}
+	
+	div.background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 55%;
+		width: 100%;
+		background: url(backgrounds/12.jpg) center center no-repeat;
+		background-size: cover;
+	}
+	
+	input,
+	input:focus {
+		z-index: 1;
+		border: 0;
+		outline: 0;
+		-webkit-appearance: none;
+	}
+	
+	.wrapper {
+		z-index: 1;
+		position: relative;
+		top: 55%;
+		transform: translateY(-165px);
+		padding: 1rem;
+	}
+	
+	#js-time {
+		z-index: 5;
+	}
+	
+	.time {
+		z-index: 2;
+		font-size: 5rem;
+		letter-spacing: 6px;
+	}
+	
+	.search {
+		z-index: 1;
+		margin-top: 2rem;
+	}
+	
+	.search__text,
+	.help {
+		z-index: 1;
+		position: relative;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 400px;
+	}
+	
+	.search__text {
+		padding: 0.75rem;
+		background-color: #fff;
+		border-radius: 2px;
+		color: #333333;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+		font-size: 1.1rem;
+	}
+	
+	.help {
+		color: #999;
+		font-family: 'RobotoDraft', sans-serif;
+		height: 0;
+		margin: 1rem auto 0;
+		border-right: solid 1px #DDDDDD;
+		transition: height 0.2s linear;
+		text-align: left;
+		line-height: 1.2rem;
+		column-count: 2;
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		overflow: hidden;
+	}
 </style>
 
-<div class="wrapper">
-  <time class="time" id="js-time"></time>
-  <form class="search" id="js-search" autocomplete="off">
-    <input class="search__text" id="js-search-text" type="text" autofocus>
-  </form>
-  <pre class="help" id="js-help"></pre>
-</div>
+<!--HTML-->
+<body>
+	<div class="background"></div>
+	<div class="wrapper">
+		<time class="time" id="js-time"></time>
+		<form class="search" id="js-search" autocomplete="off">
+			<input class="search__text" id="js-search-text" type="text" autofocus>
+		</form>
+		<pre class="help" id="js-help"></pre>
+	</div>
+</body>
 
+<!--Javascript-->
 <script type="text/javascript">
-  ;(function() {
-    var Clock = {
-      el: document.getElementById('js-time'),
+	;
+	(function() {
+		var Clock = {
+			el: document.getElementById('js-time'),
 
-      init: function() {
-        Clock.setTime();
-        setInterval(Clock.setTime, 1000);
-      },
+			init: function() {
+				Clock.setTime();
+				setInterval(Clock.setTime, 1000);
+			},
 
-      zeros: function(num) {
-        return ('0' + num.toString()).slice(-2);
-      },
+			zeros: function(num) {
+				return ('0' + num.toString()).slice(-2);
+			},
 
-      setTime: function() {
-        var date = new Date();
-        var hours = Clock.zeros(date.getHours());
-        var minutes = Clock.zeros(date.getMinutes());
-        var time = hours + ' ' + minutes;
+			setTime: function() {
+				var date = new Date();
+				var hours = Clock.zeros(date.getHours());
+				var minutes = Clock.zeros(date.getMinutes());
+				var time = hours + ':' + minutes;
 
-        Clock.el.innerHTML = time;
-      }
-    };
+				Clock.el.innerHTML = time;
+			}
+		};
 
-    var Cmdr = {
-      searchForm: document.getElementById('js-search'),
-      searchText: document.getElementById('js-search-text'),
-      searchHelp: document.getElementById('js-help'),
+		var Cmdr = {
+			searchForm: document.getElementById('js-search'),
+			searchText: document.getElementById('js-search-text'),
+			searchHelp: document.getElementById('js-help'),
 
-      init: function(opts) {
-        Cmdr.default = opts.default;
-        Cmdr.commands = opts.commands;
-        Cmdr.searchForm.addEventListener('submit', Cmdr.search, false);
-      },
+			init: function(opts) {
+				Cmdr.default = opts.default;
+				Cmdr.commands = opts.commands;
+				Cmdr.searchForm.addEventListener('submit', Cmdr.search, false);
+			},
 
-      search: function(e) {
-        var q = Cmdr.searchText.value;
+			search: function(e) {
+				var q = Cmdr.searchText.value;
 
-        if (q === '?') {
-          Cmdr.commands.forEach(function(command) {
-            Cmdr.searchHelp.innerHTML += command.key + ': ' + command.name + '\n';
-          });
+				if (q === '?') {
+					Cmdr.commands.forEach(function(command) {
+						Cmdr.searchHelp.innerHTML += command.key + ': ' + command.name + '\n';
+					});
 
-          Cmdr.searchHelp.style.height = Math.ceil(Cmdr.commands.length / 2) + 'rem';
-          Cmdr.searchText.value = '';
-        } else {
-          q = q.split(':');
-          Cmdr.location = Cmdr.default + encodeURIComponent(q);
+					Cmdr.searchHelp.style.height = 150 + 'px';
+					Cmdr.searchText.value = '';
+				} else {
+					q = q.split(':');
+					Cmdr.location = Cmdr.default+encodeURIComponent(q);
 
-          Cmdr.commands.forEach(function(command) {
-            if (q[0] === command.key) {
-              Cmdr.location = command.url;
+					Cmdr.commands.forEach(function(command) {
+						if (q[0] === command.key) {
+							Cmdr.location = command.url;
 
-              if (q[1] && command.search) {
-                q.shift();
-                var searchText = encodeURIComponent(q.join(':').trim());
-                Cmdr.location = command.url + command.search + searchText;
-              }
-            }
-          });
+							if (q[1] && command.search) {
+								q.shift();
+								var searchText = encodeURIComponent(q.join(':').trim());
+								Cmdr.location = command.url + command.search + searchText;
+							}
+						}
+					});
 
-          window.location.href = Cmdr.location;
-        }
+					window.location.href = Cmdr.location;
+				}
 
-        e.preventDefault();
-      }
-    };
+				e.preventDefault();
+			}
+		};
 
-    Clock.init();
-    Cmdr.init({
-      default: 'https://www.google.com/search?q=',
-      commands: [
-        { key: 'a', name: 'Amazon', url: 'https://www.amazon.com', search: '/s/?field-keywords=' },
-        { key: 'c', name: 'Coinbase', url: 'https://www.coinbase.com' },
-        { key: 'd', name: 'Drive', url: 'https://drive.google.com', search: '/drive/search?q=' },
-        { key: 'e', name: 'ExtraTorrent', url: 'https://extratorrent.cc', search: '/search/?search=' },
-        { key: 'f', name: 'Facebook', url: 'https://www.facebook.com', search: '/search/top/?q=' },
-        { key: 'g', name: 'GitHub', url: 'https://github.com', search: '/search?q=' },
-        { key: 'h', name: 'Hacker News', url: 'https://hn.algolia.com', search: '/?query=' },
-        { key: 'i', name: 'Inbox', url: 'https://inbox.google.com', search: '/search/' },
-        { key: 'k', name: 'Keep', url: 'https://keep.google.com', search: '/#search/text=' },
-        { key: 'p', name: 'Product Hunt', url: 'https://www.producthunt.com', search: '/search?q=' },
-        { key: 'r', name: 'Reddit', url: 'https://www.reddit.com', search: '/search?q=' },
-        { key: 's', name: 'SoundCloud', url: 'https://soundcloud.com', search: '/search?q=' },
-        { key: 't', name: 'Twitter', url: 'https://twitter.com', search: '/search?q=' },
-        { key: 'y', name: 'YouTube', url: 'https://www.youtube.com', search: '/results?search_query=' },
-      ]
-    });
-  }());
+		Clock.init();
+		Cmdr.init({
+			default: 'https://www.google.com/search?q=',
+			commands: [{
+				key: 'amazon',
+				name: 'Amazon',
+				url: 'https://www.smile.amazon.com',
+				search: '/s/?field-keywords='
+			}, {
+				key: 'tv',
+				name: 'Couchtuner',
+				url: 'http://www.couchtuner.ag'
+			}, {
+				key: 'drive',
+				name: 'Drive',
+				url: 'https://drive.google.com',
+				search: '/drive/search?q='
+			}, {
+				key: 'fb',
+				name: 'Facebook',
+				url: 'https://www.facebook.com',
+				search: '/search/top/?q='
+			}, {
+				key: 'github',
+				name: 'GitHub',
+				url: 'https://github.com',
+				search: '/search?q='
+			}, {
+				key: 'codepen',
+				name: 'Codepen',
+				url: 'http://codepen.io',
+				search: '/pens?q='
+			}, {
+				key: 'gmail',
+				name: 'Gmail',
+				url: 'https://mail.google.com/mail/u/1',
+				search: '/#search/'
+			}, {
+				key: 'k',
+				name: 'Keep',
+				url: 'https://keep.google.com',
+				search: '/#search/text='
+			}, {
+				key: 'weather',
+				name: 'WUnderground',
+				url: 'http://www.wunderground.com/us/',
+				search: ''
+			}, {
+				key: 'r',
+				name: 'Reddit',
+				url: 'https://www.reddit.com',
+				search: '/r/'
+			}, {
+				key: 'scloud',
+				name: 'Soundcloud',
+				url: 'https://soundcloud.com',
+				search: '/search?q='
+			}, {
+				key: 'twitter',
+				name: 'Twitter',
+				url: 'https://twitter.com',
+				search: '/search?q='
+			}, {
+				key: 'xda',
+				name: 'XDA Forums',
+				url: 'http://forum.xda-developers.com',
+				search: '/sitesearch.php?q='
+			}, {
+				key: 'yt',
+				name: 'YouTube',
+				url: 'https://www.youtube.com',
+				search: '/results?search_query='
+			}, ]
+		});
+	}());
 </script>
