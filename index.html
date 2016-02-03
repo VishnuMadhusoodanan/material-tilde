@@ -33,7 +33,7 @@
 		left: 0;
 		height: 55%;
 		width: 100%;
-		background: url(backgrounds/12.jpg) center center no-repeat;
+		background: url(backgrounds/1.jpg) center center no-repeat;
 		background-size: cover;
 	}
 	
@@ -104,11 +104,11 @@
 
 <!--HTML-->
 <body>
-	<div class="background"></div>
+	<div id="bg" class="background"></div>
 	<div class="wrapper">
 		<time class="time" id="js-time"></time>
 		<form class="search" id="js-search" autocomplete="off">
-			<input class="search__text" id="js-search-text" type="text" autofocus>
+			<input class="search__text" id="js-search-text" placeholder="Search" type="text" autofocus>
 		</form>
 		<pre class="help" id="js-help"></pre>
 	</div>
@@ -118,6 +118,16 @@
 <script type="text/javascript">
 	;
 	(function() {
+        
+        var d = new Date();
+        var day = d.getDay();
+        var month = d.getMonth();
+        var year = d.getFullYear();
+        
+        //Changes header background image to seasonal image
+        document.getElementById("bg").style.background = "url(backgrounds/" + month.toString() + ".jpg) center center no-repeat";
+        document.getElementById("bg").style.backgroundSize = "cover"
+        
 		var Clock = {
 			el: document.getElementById('js-time'),
 
@@ -222,10 +232,10 @@
 				url: 'https://mail.google.com/mail/u/1',
 				search: '/#search/'
 			}, {
-				key: 'k',
-				name: 'Keep',
-				url: 'https://keep.google.com',
-				search: '/#search/text='
+				key: 'wolfram',
+				name: 'Wolfram Alpha',
+				url: 'http://www.wolframalpha.com',
+				search: '/input/?i='
 			}, {
 				key: 'weather',
 				name: 'WUnderground',
