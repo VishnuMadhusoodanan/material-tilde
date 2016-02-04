@@ -103,12 +103,12 @@
 </style>
 
 <!--HTML-->
-<body>
+<body onLoad="document.forms.search.search-bar.focus()">
 	<div id="bg" class="background"></div>
 	<div class="wrapper">
 		<time class="time" id="js-time"></time>
-		<form class="search" id="js-search" autocomplete="off">
-			<input class="search__text" id="js-search-text" placeholder="Search" type="text" autofocus>
+		<form class="search" id="js-search" name="search" autocomplete="off">
+			<input class="search__text" id="js-search-text" name="search-bar" placeholder="Search" type="text" autofocus>
 		</form>
 		<pre class="help" id="js-help"></pre>
 	</div>
