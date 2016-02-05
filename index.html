@@ -88,18 +88,33 @@
 	
 	.help {
 		color: #999;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.26);
+        padding: 40px;
 		font-family: 'RobotoDraft', sans-serif;
-		height: 0;
-		margin: 1rem auto 0;
-		border-right: solid 1px #DDDDDD;
+        background: #fff;
+		height: 250px;
+        max-width: 450px;
 		transition: height 0.2s linear;
 		text-align: left;
-		line-height: 1.2rem;
+		line-height: 1.3rem;
 		column-count: 2;
 		-moz-column-count: 2;
 		-webkit-column-count: 2;
 		overflow: hidden;
 	}
+    .close {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        color: #333;
+    }
 </style>
 
 <!--HTML-->
@@ -110,7 +125,7 @@
 		<form class="search" id="js-search" name="search" autocomplete="off">
 			<input class="search__text" id="js-search-text" name="search-bar" placeholder="Search" type="text" autofocus>
 		</form>
-		<pre class="help" id="js-help"></pre>
+		<pre class="help" id="js-help"><a class="close" href="">close</a></pre>
 	</div>
 </body>
 
@@ -169,7 +184,8 @@
 						Cmdr.searchHelp.innerHTML += command.key + ': ' + command.name + '\n';
 					});
 
-					Cmdr.searchHelp.style.height = 150 + 'px';
+					Cmdr.searchHelp.style.visibility = 'visible';
+                    Cmdr.searchHelp.style.opacity = '1';
 					Cmdr.searchText.value = '';
 				} else {
 					q = q.split(':');
@@ -200,22 +216,23 @@
 			commands: [{
 				key: 'amazon',
 				name: 'Amazon',
-				url: 'https://www.smile.amazon.com',
+				url: 'https://www.amazon.com',
 				search: '/s/?field-keywords='
 			}, {
 				key: 'tv',
 				name: 'Couchtuner',
-				url: 'http://www.couchtuner.ag'
+				url: 'http://www.couchtuner.ag',
+                search: '/?s='
 			}, {
 				key: 'drive',
 				name: 'Drive',
 				url: 'https://drive.google.com',
 				search: '/drive/search?q='
 			}, {
-				key: 'fb',
-				name: 'Facebook',
-				url: 'https://www.facebook.com',
-				search: '/search/top/?q='
+				key: 'img',
+				name: 'Image Search',
+				url: 'http://images.google.com',
+				search: '/images?q='
 			}, {
 				key: 'github',
 				name: 'GitHub',
@@ -238,9 +255,9 @@
 				search: '/input/?i='
 			}, {
 				key: 'weather',
-				name: 'WUnderground',
-				url: 'http://www.wunderground.com/us/',
-				search: ''
+				name: 'Weather.com',
+				url: 'https://weather.com',
+				search: '/weather/today/l/'
 			}, {
 				key: 'r',
 				name: 'Reddit',
