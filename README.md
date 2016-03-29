@@ -2,7 +2,7 @@
 
 A material design new tab/homepage based off of [cadejscroggins' tilde startpage](https://cadejscroggins.github.io/tilde/).
 
-[LIVE DEMO](http://vishnumadhusoodanan.github.io/material-tilde/)
+[LIVE DEMO](http://vishnumad.github.io/material-tilde/)
 
 **Usage:**
 
